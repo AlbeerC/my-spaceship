@@ -201,6 +201,32 @@ function HomePage() {
         }}
         transition={{ duration: 1 }}
       />
+
+      <div className="absolute bottom-5 w-full flex justify-center items-center gap-2">
+        <p className="text-cyan-300 text-center font-mono font-bold uppercase">
+          Scroll para explorar nuevas misiones
+        </p>
+        {/* Flecha animada */}
+        <motion.div
+          className="flex justify-center"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+        >
+          <svg
+            className="w-6 h-6 text-cyan-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </motion.div>
+      </div>
     </SnapSection>
   );
 }
