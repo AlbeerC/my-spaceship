@@ -8,7 +8,11 @@ function SnapSection ( {background, children, id} ) {
     }
 
     return (
-        <section style={bgImageStyles} className='snap-start h-screen overflow-hidden' id={id}>
+        <section 
+            style={bgImageStyles} 
+            className='snap-start h-screen relative' 
+            id={id}
+        >
             {children}
         </section>
     )
