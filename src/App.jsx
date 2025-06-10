@@ -2,7 +2,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import SkillsPage from "./pages/SkillsPage";
-import ProjectsPage from "./pages/Projects";
+import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import DotNav from "./components/DotNav";
 

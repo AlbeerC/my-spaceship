@@ -10,8 +10,6 @@ import javascript from "../assets/skills/javascript.png"
 import tailwind from "../assets/skills/tailwind.png"
 import leetcode from "../assets/skills/leetcode.png"
 import css from "../assets/skills/css.png"
-import AnimatedStars from "../components/AnimatedStars"
-import { HomeEffects } from "../components/HomeEffects"
 
 export default function FloatingSkills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
@@ -26,7 +24,7 @@ export default function FloatingSkills() {
       size: 90,
       delay: 0.8,
       experience: 3,
-      projects: +30,
+      projects: 30,
       level: "INTERMEDIATE",
       stats: { usage: 82, learning: 76 },
     },
@@ -38,9 +36,9 @@ export default function FloatingSkills() {
       size: 90,
       delay: 0,
       experience: 3,
-      projects: +20,
+      projects: 40,
       level: "INTERMEDIATE",
-      stats: { usage: 80, learning: 80 },
+      stats: { usage: 88, learning: 80 },
     },
     {
       name: "React",
@@ -50,7 +48,7 @@ export default function FloatingSkills() {
       size: 90,
       delay: 0.5,
       experience: 2,
-      projects: +10,
+      projects: 10,
       level: "INTERMEDIATE",
       stats: { usage: 95, learning: 92 },
     },
@@ -62,8 +60,8 @@ export default function FloatingSkills() {
       size: 90,
       delay: 1,
       experience: 2,
-      projects: +5,
-      level: "ADVANCED",
+      projects: 5,
+      level: "LEARNING",
       stats: { usage: 45, learning: 70 },
     },
     {
@@ -86,7 +84,7 @@ export default function FloatingSkills() {
       size: 90,
       delay: 2,
       experience: 3,
-      projects: +25,
+      projects: 25,
       level: "INTERMIDIATE",
       stats: { usage: 100, learning: 84 },
     },
@@ -212,7 +210,10 @@ export default function FloatingSkills() {
                 <div className="space-y-2 mb-3">
                   <div className="flex justify-between text-xs">
                     <span className="text-purple-300">Experiencia:</span>
-                    <span className="text-cyan-300">{currentSkill.experience} años</span>
+                    <span className="text-cyan-300">
+                      {currentSkill.experience}
+                      {currentSkill.experience === 1 ? " año" : " años"}
+                      </span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-purple-300">Proyectos:</span>
