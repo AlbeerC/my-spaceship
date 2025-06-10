@@ -1,120 +1,101 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import SnapSection from "../components/SnapSection"
-import skillsbg from "../assets/skills-bg.png"
-import git from "../assets/skills/git.png"
-import react from "../assets/skills/react.png"
-import node from "../assets/skills/node.png"
-import typescript from "../assets/skills/typescript.png"
-import javascript from "../assets/skills/javascript.png"
-import tailwind from "../assets/skills/tailwind.png"
-import leetcode from "../assets/skills/leetcode.png"
-import css from "../assets/skills/css.png"
-import AnimatedStars from "../components/AnimatedStars"
-import { HomeEffects } from "../components/HomeEffects"
 
-export default function FloatingSkills() {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+
+export default function FloatingSkillsAnalyzer() {
+  const [hoveredSkill, setHoveredSkill] = useState(null)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [scanningProgress, setScanningProgress] = useState(0)
 
   const skills = [
     {
-      name: "CSS",
-      icon: css,
-      color: "from-cyan-400 to-blue-500",
-      position: { x: 7, y: 50 },
-      size: 90,
-      delay: 0.8,
-      experience: 3,
-      projects: +30,
-      level: "INTERMEDIATE",
-      stats: { usage: 82, learning: 76 },
-    },
-    {
       name: "Git",
-      icon: git,
+      icon: "/skills/git.png",
       color: "from-cyan-400 to-purple-500",
       position: { x: 15, y: 25 },
-      size: 90,
+      size: 80,
       delay: 0,
-      experience: 3,
-      projects: +20,
-      level: "INTERMEDIATE",
-      stats: { usage: 80, learning: 80 },
+      experience: 4,
+      projects: 25,
+      level: "EXPERT",
+      description: "Control de versiones y colaboración",
+      stats: { proficiency: 95, usage: 100, learning: 85 },
     },
     {
       name: "React",
-      icon: react,
+      icon: "/skills/react.png",
       color: "from-blue-400 to-cyan-500",
-      position: { x: 40, y: 20 },
+      position: { x: 55, y: 15 },
       size: 90,
       delay: 0.5,
-      experience: 2,
-      projects: +10,
-      level: "INTERMEDIATE",
-      stats: { usage: 95, learning: 92 },
+      experience: 3,
+      projects: 18,
+      level: "ADVANCED",
+      description: "Biblioteca para interfaces de usuario",
+      stats: { proficiency: 90, usage: 95, learning: 92 },
     },
     {
       name: "Node.js",
-      icon: node,
+      icon: "/skills/node.png",
       color: "from-green-400 to-emerald-500",
       position: { x: 25, y: 60 },
-      size: 90,
+      size: 85,
       delay: 1,
-      experience: 2,
-      projects: +5,
+      experience: 3,
+      projects: 15,
       level: "ADVANCED",
-      stats: { usage: 45, learning: 70 },
+      description: "Runtime de JavaScript para backend",
+      stats: { proficiency: 85, usage: 80, learning: 88 },
     },
     {
       name: "TypeScript",
-      icon: typescript,
+      icon: "/skills/typescript.png",
       color: "from-blue-500 to-indigo-600",
-      position: { x: 50, y: 70 },
-      size: 90,
+      position: { x: 60, y: 70 },
+      size: 75,
       delay: 1.5,
-      experience: 1,
-      projects: 4,
-      level: "LEARNING",
-      stats: { usage: 70, learning: 95 },
+      experience: 2,
+      projects: 12,
+      level: "INTERMEDIATE",
+      description: "JavaScript con tipado estático",
+      stats: { proficiency: 80, usage: 85, learning: 95 },
     },
     {
       name: "JavaScript",
-      icon: javascript,
+      icon: "/skills/javascript.png",
       color: "from-yellow-400 to-orange-500",
       position: { x: 40, y: 40 },
-      size: 90,
+      size: 70,
       delay: 2,
-      experience: 3,
-      projects: +25,
-      level: "INTERMIDIATE",
-      stats: { usage: 100, learning: 84 },
+      experience: 4,
+      projects: 30,
+      level: "EXPERT",
+      description: "Lenguaje de programación web",
+      stats: { proficiency: 95, usage: 100, learning: 80 },
     },
     {
       name: "Tailwind CSS",
-      icon: tailwind,
+      icon: "/skills/tailwind.png",
       color: "from-teal-400 to-cyan-500",
-      position: { x: 10, y: 75 },
-      size: 90,
-      delay: 2.5,
-      experience: 1,
-      projects: 5,
-      level: "LEARNING",
-      stats: { usage: 90, learning: 85 },
-    },
-    {
-      name: "Leetcode",
-      icon: leetcode,
-      color: "from-cyan-400 to-purple-500",
-      position: { x: 55, y: 45 },
-      size: 90,
+      position: { x: 10, y: 80 },
+      size: 65,
       delay: 2.5,
       experience: 2,
-      projects: 91,
-      level: "LEARNING",
-      stats: { usage: 75, learning: 90 },
+      projects: 20,
+      level: "ADVANCED",
+      description: "Framework CSS utility-first",
+      stats: { proficiency: 88, usage: 90, learning: 85 },
     },
   ]
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
 
   // Scanning animation when hovering
   useEffect(() => {
@@ -150,20 +131,39 @@ export default function FloatingSkills() {
   const currentSkill = skills.find((skill) => skill.name === hoveredSkill)
 
   return (
-    <SnapSection background={skillsbg} id="skills" className="snap-mandatory">
+    <div className="min-h-screen relative overflow-hidden bg-slate-900">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img src="/skills-bg.png" alt="Skills analyzer room" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-transparent to-slate-900/50" />
+      </div>
 
       {/* Skill Analyzer Screen Overlay */}
-      <div className="absolute bottom-[34%] right-[12%] w-[23%] h-[40%] z-15" style={{ transform: "rotate(2deg)" }}>
+      <div className="absolute bottom-[15%] right-[8%] w-[25%] h-[35%] z-15">
         <AnimatePresence mode="wait">
           {hoveredSkill && currentSkill ? (
             <motion.div
               key={hoveredSkill}
-              className="w-full h-full bg-transparent overflow-hidden"
+              className="w-full h-full bg-slate-900/95 backdrop-blur-sm rounded-lg border border-purple-500/50 overflow-hidden"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
+              style={{
+                boxShadow: "0 0 20px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.1)",
+              }}
             >
+              {/* Header */}
+              <div className="bg-purple-600/30 p-2 border-b border-purple-500/30">
+                <div className="flex items-center justify-between">
+                  <span className="text-purple-300 font-mono text-xs">SKILL ANALYZER</span>
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 rounded-full bg-green-400" />
+                    <div className="w-2 h-2 rounded-full bg-yellow-400" />
+                    <div className="w-2 h-2 rounded-full bg-red-400" />
+                  </div>
+                </div>
+              </div>
 
               {/* Content */}
               <div className="p-3 h-full">
@@ -173,10 +173,11 @@ export default function FloatingSkills() {
                     <img
                       src={currentSkill.icon || "/placeholder.svg"}
                       alt={currentSkill.name}
-                      className="w-full h-full object-contain"
+                      width={32}
+                      height={32}
                     />
                   </div>
-                  <div className="flex justify-between items-center w-full">
+                  <div>
                     <h3 className="text-purple-300 font-mono text-sm font-bold">{currentSkill.name}</h3>
                     <span
                       className={`text-xs font-mono ${
@@ -246,12 +247,18 @@ export default function FloatingSkills() {
                   ))}
                 </div>
 
+                {/* Description */}
+                <div className="mt-3 pt-2 border-t border-purple-500/30">
+                  <p className="text-purple-200 text-xs leading-relaxed">{currentSkill.description}</p>
+                </div>
+
                 {/* Animated Elements */}
                 <motion.div
                   className="absolute bottom-2 right-2 w-4 h-4"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                 >
+                  <div className="w-full h-full border-2 border-purple-400 border-t-transparent rounded-full" />
                 </motion.div>
               </div>
 
@@ -264,7 +271,7 @@ export default function FloatingSkills() {
             </motion.div>
           ) : (
             <motion.div
-              className="w-full h-full flex items-center justify-center"
+              className="w-full h-full bg-slate-900/80 backdrop-blur-sm rounded-lg border border-purple-500/30 flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
@@ -336,12 +343,8 @@ export default function FloatingSkills() {
               <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${skill.color} p-1`}>
                 <div className="w-full h-full rounded-full bg-slate-900/80 backdrop-blur-sm flex items-center justify-center">
                   {/* Skill Icon */}
-                  <div className="relative w-[60%]">
-                    <img
-                      src={skill.icon || "/placeholder.svg"}
-                      alt={skill.name}
-                      className="object-contain w-full h-full"
-                    />
+                  <div className="relative w-[60%] h-[60%]">
+                    <img src={skill.icon || "/placeholder.svg"} alt={skill.name} fill className="object-contain" />
                   </div>
                 </div>
               </div>
@@ -436,7 +439,7 @@ export default function FloatingSkills() {
 
       {/* Section Title */}
       <motion.div
-        className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute top-8 left-8 z-20"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 1 }}
@@ -450,6 +453,6 @@ export default function FloatingSkills() {
         />
         <p className="text-cyan-400/70 font-mono text-sm mt-2">Hover para analizar tecnologías</p>
       </motion.div>
-    </SnapSection>
+    </div>
   )
 }

@@ -4,7 +4,7 @@ import AnimatedStars from "../components/AnimatedStars";
 import { HomeEffects } from "../components/HomeEffects";
 import HudAboutMe from "../components/HudAboutMe";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 function AboutPage() {
   const [openModal, setOpenModal] = useState(false);
