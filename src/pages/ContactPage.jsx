@@ -18,8 +18,8 @@ function ContactPage() {
     if (width >= 2000) return { bottom: "26%", right: "19%" };
     if (width >= 1800) return { bottom: "25%", right: "18%" };
     if (width >= 1600) return { bottom: "24%", right: "17%" };
-    if (width >= 1400) return { bottom: "23%", right: "16%" };
-    if (width >= 1300) return { bottom: "21%", right: "16%" };
+    if (width >= 1400) return { bottom: "23%", right: "17%" };
+    if (width >= 1300) return { bottom: "19%", right: "17%" };
     return { bottom: "21%", right: "15%" };
   })();
 
@@ -164,14 +164,14 @@ function ContactPage() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-[300px] h-[180px] 2xl:w-[400px] 2xl:h-[230px]"
+            className="w-[320px] h-[180px] 2xl:w-[420px] 2xl:h-[230px]"
             style={{
               transform: "perspective(800px) rotateX(5deg) rotateY(-10deg)",
             }}
           >
             <div className="w-full h-full">
               {/* Header estilo terminal */}
-              <div className="flex items-center justify-between mb-3">
+              <div className="hidden">
                 <div className="flex gap-1">
                   <div className="w-2 h-2 bg-red-400 rounded-full" />
                   <div className="w-2 h-2 bg-yellow-400 rounded-full" />
@@ -217,7 +217,7 @@ function ContactPage() {
                   onSubmit={handleSubmit}
                   className="space-y-2 2xl:space-y-4"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-x-2">
                     <div className="relative">
                       <input
                         type="text"
