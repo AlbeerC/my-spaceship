@@ -1,19 +1,22 @@
-import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
-import SnapSection from "../components/SnapSection"
-import skillsbg from "../assets/skills-bg.png"
-import git from "../assets/skills/git.png"
-import react from "../assets/skills/react.png"
-import node from "../assets/skills/node.png"
-import typescript from "../assets/skills/typescript.png"
-import javascript from "../assets/skills/javascript.png"
-import tailwind from "../assets/skills/tailwind.png"
-import leetcode from "../assets/skills/leetcode.png"
-import css from "../assets/skills/css.png"
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import SnapSection from "../components/SnapSection";
+import useBreakpoint from "../components/UseBreakpoint";
+import skillsbg from "../assets/skills-bg.png";
+import git from "../assets/skills/git.png";
+import react from "../assets/skills/react.png";
+import node from "../assets/skills/node.png";
+import typescript from "../assets/skills/typescript.png";
+import javascript from "../assets/skills/javascript.png";
+import tailwind from "../assets/skills/tailwind.png";
+import leetcode from "../assets/skills/leetcode.png";
+import css from "../assets/skills/css.png";
 
 export default function FloatingSkills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
-  const [scanningProgress, setScanningProgress] = useState(0)
+  const [scanningProgress, setScanningProgress] = useState(0);
+
+  const is2XL = useBreakpoint()
 
   const skills = [
     {
@@ -22,6 +25,7 @@ export default function FloatingSkills() {
       color: "from-cyan-400 to-blue-500",
       position: { x: 7, y: 50 },
       size: 90,
+      xlSize: 120,
       delay: 0.8,
       experience: 3,
       projects: 30,
@@ -34,6 +38,7 @@ export default function FloatingSkills() {
       color: "from-cyan-400 to-purple-500",
       position: { x: 15, y: 25 },
       size: 90,
+      xlSize: 120,
       delay: 0,
       experience: 3,
       projects: 40,
@@ -46,9 +51,10 @@ export default function FloatingSkills() {
       color: "from-blue-400 to-cyan-500",
       position: { x: 40, y: 20 },
       size: 90,
+      xlSize: 120,
       delay: 0.5,
       experience: 2,
-      projects: 10,
+      projects: 15,
       level: "INTERMEDIATE",
       stats: { usage: 95, learning: 92 },
     },
@@ -58,6 +64,7 @@ export default function FloatingSkills() {
       color: "from-green-400 to-emerald-500",
       position: { x: 25, y: 60 },
       size: 90,
+      xlSize: 120,
       delay: 1,
       experience: 2,
       projects: 5,
@@ -70,6 +77,7 @@ export default function FloatingSkills() {
       color: "from-blue-500 to-indigo-600",
       position: { x: 50, y: 70 },
       size: 90,
+      xlSize: 120,
       delay: 1.5,
       experience: 1,
       projects: 4,
@@ -82,10 +90,11 @@ export default function FloatingSkills() {
       color: "from-yellow-400 to-orange-500",
       position: { x: 40, y: 40 },
       size: 90,
+      xlSize: 120,
       delay: 2,
       experience: 3,
       projects: 25,
-      level: "INTERMIDIATE",
+      level: "INTERMEDIATE",
       stats: { usage: 100, learning: 84 },
     },
     {
@@ -94,6 +103,7 @@ export default function FloatingSkills() {
       color: "from-teal-400 to-cyan-500",
       position: { x: 10, y: 75 },
       size: 90,
+      xlSize: 120,
       delay: 2.5,
       experience: 1,
       projects: 5,
@@ -106,52 +116,55 @@ export default function FloatingSkills() {
       color: "from-cyan-400 to-purple-500",
       position: { x: 55, y: 45 },
       size: 90,
+      xlSize: 120,
       delay: 2.5,
       experience: 2,
       projects: 91,
       level: "LEARNING",
       stats: { usage: 75, learning: 90 },
     },
-  ]
+  ];
 
   // Scanning animation when hovering
   useEffect(() => {
     if (hoveredSkill) {
-      setScanningProgress(0)
+      setScanningProgress(0);
       const interval = setInterval(() => {
         setScanningProgress((prev) => {
           if (prev >= 100) {
-            clearInterval(interval)
-            return 100
+            clearInterval(interval);
+            return 100;
           }
-          return prev + 2
-        })
-      }, 30)
-      return () => clearInterval(interval)
+          return prev + 2;
+        });
+      }, 30);
+      return () => clearInterval(interval);
     }
-  }, [hoveredSkill])
+  }, [hoveredSkill]);
 
   const getFloatingAnimation = (index) => ({
     y: [0, -20, 0],
     x: [0, 10, -5, 0],
     rotate: [0, 5, -5, 0],
     scale: [1, 1.05, 1],
-  })
+  });
 
   const getFloatingTransition = (delay) => ({
     duration: 4 + Math.random() * 2,
     repeat: Number.POSITIVE_INFINITY,
     ease: "easeInOut",
     delay,
-  })
+  });
 
-  const currentSkill = skills.find((skill) => skill.name === hoveredSkill)
+  const currentSkill = skills.find((skill) => skill.name === hoveredSkill);
 
   return (
     <SnapSection background={skillsbg} id="skills" className="snap-mandatory">
-
       {/* Skill Analyzer Screen Overlay */}
-      <div className="absolute bottom-[34%] right-[12%] w-[23%] h-[40%] z-15" style={{ transform: "rotate(2deg)" }}>
+      <div
+        className="absolute bottom-[34%] right-[12%] w-[23%] h-[40%] 2xl:bottom-[28%] z-15"
+        style={{ transform: "rotate(2deg)" }}
+      >
         <AnimatePresence mode="wait">
           {hoveredSkill && currentSkill ? (
             <motion.div
@@ -162,7 +175,6 @@ export default function FloatingSkills() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
             >
-
               {/* Content */}
               <div className="p-3 h-full">
                 {/* Skill Header */}
@@ -175,14 +187,16 @@ export default function FloatingSkills() {
                     />
                   </div>
                   <div className="flex justify-between items-center w-full">
-                    <h3 className="text-purple-300 font-mono text-sm font-bold">{currentSkill.name}</h3>
+                    <h3 className="text-purple-300 font-mono text-sm font-bold">
+                      {currentSkill.name}
+                    </h3>
                     <span
                       className={`text-xs font-mono ${
-                        currentSkill.level === "EXPERT"
+                        currentSkill.level === "INTERMEDIATE"
                           ? "text-green-400"
-                          : currentSkill.level === "ADVANCED"
-                            ? "text-blue-400"
-                            : "text-yellow-400"
+                          : currentSkill.level === "LEARNING"
+                          ? "text-yellow-400"
+                          : "text-blue-400"
                       }`}
                     >
                       {currentSkill.level}
@@ -207,60 +221,71 @@ export default function FloatingSkills() {
                 </div>
 
                 {/* Stats */}
-                <div className="space-y-2 mb-3">
+                <div className="space-y-2 2xl:space-y-4 mb-3">
                   <div className="flex justify-between text-xs">
                     <span className="text-purple-300">Experiencia:</span>
                     <span className="text-cyan-300">
                       {currentSkill.experience}
                       {currentSkill.experience === 1 ? " año" : " años"}
-                      </span>
+                    </span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-purple-300">Proyectos:</span>
-                    <span className="text-cyan-300">{currentSkill.projects}</span>
+                    <span className="text-cyan-300">
+                      {currentSkill.projects}
+                    </span>
                   </div>
                 </div>
 
                 {/* Performance Bars */}
-                <div className="space-y-2">
-                  {Object.entries(currentSkill.stats).map(([key, value], index) => (
-                    <div key={key}>
-                      <div className="flex justify-between text-xs text-purple-300 mb-1">
-                        <span className="capitalize">{key}:</span>
-                        <span>{value}%</span>
-                      </div>
-                      <div className="w-full bg-slate-700 rounded-full h-1">
-                        <motion.div
-                          className={`h-1 rounded-full ${
-                            key === "proficiency"
-                              ? "bg-gradient-to-r from-green-500 to-emerald-400"
-                              : key === "usage"
+                <div className="space-y-2 2xl:space-y-4">
+                  {Object.entries(currentSkill.stats).map(
+                    ([key, value], index) => (
+                      <div key={key}>
+                        <div className="flex justify-between text-xs text-purple-300 mb-1">
+                          <span className="capitalize">{key}:</span>
+                          <span>{value}%</span>
+                        </div>
+                        <div className="w-full bg-slate-700 rounded-full h-1">
+                          <motion.div
+                            className={`h-1 rounded-full ${
+                              key === "proficiency"
+                                ? "bg-gradient-to-r from-green-500 to-emerald-400"
+                                : key === "usage"
                                 ? "bg-gradient-to-r from-blue-500 to-cyan-400"
                                 : "bg-gradient-to-r from-purple-500 to-pink-400"
-                          }`}
-                          initial={{ width: 0 }}
-                          animate={{ width: `${value}%` }}
-                          transition={{ duration: 1, delay: index * 0.2 }}
-                        />
+                            }`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${value}%` }}
+                            transition={{ duration: 1, delay: index * 0.2 }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
 
                 {/* Animated Elements */}
                 <motion.div
                   className="absolute bottom-2 right-2 w-4 h-4"
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                >
-                </motion.div>
+                  transition={{
+                    duration: 2,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "linear",
+                  }}
+                ></motion.div>
               </div>
 
               {/* Scan Line Effect */}
               <motion.div
                 className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent"
                 animate={{ y: [0, 200, 0] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                transition={{
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
               />
             </motion.div>
           ) : (
@@ -269,14 +294,22 @@ export default function FloatingSkills() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              <div className="text-center">
+              <div className="text-center 2xl:mb-40">
                 <motion.div
-                  className="w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full mx-auto mb-2"
+                  className="w-8 h-8 2xl:w-8 2xl:h-8 border-2 border-purple-400 border-t-transparent rounded-full mx-auto mb-2"
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  transition={{
+                    duration: 1,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "linear",
+                  }}
                 />
-                <p className="text-purple-300 font-mono text-xs">STANDBY MODE</p>
-                <p className="text-purple-400/70 font-mono text-xs mt-1">Hover skill to analyze</p>
+                <p className="text-purple-300 font-mono text-xs 2xl:text-xl">
+                  STANDBY MODE
+                </p>
+                <p className="text-purple-400/70 font-mono text-xs mt-1 2xl:text-lg">
+                  Hover skill to analyze
+                </p>
               </div>
             </motion.div>
           )}
@@ -294,6 +327,10 @@ export default function FloatingSkills() {
               top: `${skill.position.y}%`,
               width: skill.size,
               height: skill.size,
+              ...(is2XL && {
+                width: skill.xlSize,
+                height: skill.xlSize,
+              }),
             }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{
@@ -334,7 +371,9 @@ export default function FloatingSkills() {
               transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
             >
               {/* Gradient Border */}
-              <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${skill.color} p-1`}>
+              <div
+                className={`absolute inset-0 rounded-full bg-gradient-to-br ${skill.color} p-1`}
+              >
                 <div className="w-full h-full rounded-full bg-slate-900/80 backdrop-blur-sm flex items-center justify-center">
                   {/* Skill Icon */}
                   <div className="relative w-[60%]">
@@ -367,7 +406,8 @@ export default function FloatingSkills() {
                 <motion.div
                   className="absolute inset-0 rounded-full"
                   style={{
-                    background: "radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%)",
+                    background:
+                      "radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%)",
                   }}
                   animate={{
                     scale: [1, 1.5, 1],
@@ -400,40 +440,15 @@ export default function FloatingSkills() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
               >
-                <span className="text-cyan-300 font-mono text-sm">{skill.name}</span>
+                <span className="text-cyan-300 font-mono text-sm">
+                  {skill.name}
+                </span>
                 <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-800 border-l border-t border-cyan-400/50 rotate-45" />
               </motion.div>
             )}
           </motion.div>
         ))}
       </div>
-
-      {/* Data Transfer Particles */}
-      {hoveredSkill && (
-        <div className="absolute inset-0 z-5 pointer-events-none">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-purple-400 rounded-full"
-              style={{
-                left: `${35 + Math.random() * 30}%`,
-                top: `${30 + Math.random() * 40}%`,
-              }}
-              animate={{
-                x: [0, 200, 400],
-                y: [0, -50, -20],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Number.POSITIVE_INFINITY,
-                delay: i * 0.3,
-                ease: "easeOut",
-              }}
-            />
-          ))}
-        </div>
-      )}
 
       {/* Section Title */}
       <motion.div
@@ -442,15 +457,19 @@ export default function FloatingSkills() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 1 }}
       >
-        <h2 className="text-4xl font-mono font-bold text-cyan-300 mb-2">TECH STACK</h2>
+        <h2 className="text-4xl font-mono font-bold text-cyan-300 mb-2">
+          TECH STACK
+        </h2>
         <motion.div
           className="h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"
           initial={{ width: 0 }}
           animate={{ width: "200px" }}
           transition={{ duration: 1.5, delay: 1.5 }}
         />
-        <p className="text-cyan-400/70 font-mono text-sm mt-2">Hover para analizar tecnologías</p>
+        <p className="text-cyan-400/70 font-mono text-lg mt-2">
+          Hover para analizar tecnologías
+        </p>
       </motion.div>
     </SnapSection>
-  )
+  );
 }

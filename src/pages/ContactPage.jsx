@@ -6,9 +6,22 @@ import { motion } from "framer-motion";
 import { useForm, ValidationError } from "@formspree/react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { useWindowWidth } from "../components/UseWindowWidth";
 
 function ContactPage() {
   const [state, handleSubmit] = useForm("mzzgeqrr");
+
+  const width = useWindowWidth();
+
+  const formStyles = (() => {
+    if (width >= 2200) return { bottom: "27%", right: "20%" };
+    if (width >= 2000) return { bottom: "26%", right: "19%" };
+    if (width >= 1800) return { bottom: "25%", right: "18%" };
+    if (width >= 1600) return { bottom: "24%", right: "17%" };
+    if (width >= 1400) return { bottom: "23%", right: "16%" };
+    if (width >= 1300) return { bottom: "21%", right: "16%" };
+    return { bottom: "21%", right: "15%" };
+  })();
 
   const socialNetworks = [
     {
@@ -73,12 +86,12 @@ function ContactPage() {
         {/* Panel de Redes Sociales - Esquina inferior izquierda */}
         <motion.div
           variants={screenVariants}
-          className="absolute bottom-[20%] left-[12%] w-[250px] h-[210px]"
+          className="absolute bottom-[20%] left-[12%] w-[250px] h-[210px] 2xl:w-[350px]"
         >
           <div className="w-full h-full bg-black/40 rounded-lg border border-cyan-300 shadow-[0_0_20px_rgba(0,255,255,0.3)] p-3 backdrop-blur-sm">
             {/* Header del panel */}
             <div className="flex items-center justify-between mb-3">
-              <span className="text-cyan-400 text-xs font-mono">
+              <span className="text-cyan-400 text-xs 2xl:text-sm font-mono">
                 SOCIAL_LINKS
               </span>
               <motion.div
@@ -98,7 +111,7 @@ function ContactPage() {
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.05 }}
                   whileHover={{
                     scale: 1.1,
                     boxShadow: `0 0 20px ${
@@ -117,8 +130,8 @@ function ContactPage() {
                   <div
                     className={`w-full h-15 bg-black/60 border border-gray-600/50 rounded flex flex-col items-center justify-center hover:border-cyan-400/60 transition-all duration-300`}
                   >
-                    <social.icon className={`w-6 h-6 ${social.color} mb-1`} />
-                    <span className="text-xs font-mono text-gray-400 group-hover:text-cyan-400 transition-colors">
+                    <social.icon className={`w-6 h-6 2xl:w-8 2xl:h-8 ${social.color} mb-1`} />
+                    <span className="text-xs 2xl:text-md font-mono text-gray-400 group-hover:text-cyan-400 transition-colors">
                       {social.label}
                     </span>
                   </div>
@@ -135,7 +148,7 @@ function ContactPage() {
 
             {/* Indicador de estado */}
             <div className="mt-2 text-center">
-              <span className="text-xs font-mono text-gray-500">
+              <span className="text-xs 2xl:text-sm font-mono text-gray-500">
                 EXTERNAL_COMM
               </span>
             </div>
@@ -144,14 +157,14 @@ function ContactPage() {
 
         {/* Formulario de contacto */}
         <div
-          className="p-4 absolute bottom-[18%] right-[16%]"
-          style={{ transform: "rotate(4deg)" }}
+          className="p-4 absolute"
+          style={{ ...formStyles, transform: "rotate(4deg)" }}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-[350px] h-[200px]"
+            className="w-[300px] h-[180px] 2xl:w-[400px] 2xl:h-[230px]"
             style={{
               transform: "perspective(800px) rotateX(5deg) rotateY(-10deg)",
             }}
@@ -170,7 +183,7 @@ function ContactPage() {
                     animate={{ opacity: [0.3, 1, 0.3] }}
                     transition={{ duration: 1, repeat: Infinity }}
                   />
-                  <span className="text-orange-400 text-xs font-mono">
+                  <span className="text-orange-400 text-xs font-mono 2xl:text-md">
                     COMM_TERMINAL
                   </span>
                 </div>
@@ -182,10 +195,10 @@ function ContactPage() {
                   animate={{ opacity: 1 }}
                   className="text-center py-4"
                 >
-                  <div className="text-green-400 text-xs font-mono mb-2">
+                  <div className="text-green-400 text-xs 2xl:text-md font-mono mb-2">
                     TRANSMISION_EXITOSA
                   </div>
-                  <div className="text-green-400 text-xs font-mono">
+                  <div className="text-green-400 text-xs 2xl:text-md font-mono">
                     MENSAJE_ENVIADO
                   </div>
                   <motion.div
@@ -194,20 +207,23 @@ function ContactPage() {
                       duration: 1,
                       repeat: Number.POSITIVE_INFINITY,
                     }}
-                    className="text-green-400 text-xs font-mono mt-2"
+                    className="text-green-400 text-xs 2xl:text-md font-mono mt-2"
                   >
                     ● ONLINE
                   </motion.div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-2">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-2 2xl:space-y-4"
+                >
                   <div className="flex items-center justify-between">
                     <div className="relative">
                       <input
                         type="text"
                         name="name"
                         required
-                        className="w-full px-2 py-1 bg-black/60 border border-cyan-400/40 rounded text-cyan-400 text-xs placeholder-cyan-400/60 focus:border-cyan-400 focus:outline-none font-mono"
+                        className="w-full px-2 py-1 bg-black/60 border border-cyan-400/40 rounded text-cyan-400 text-xs 2xl:text-lg placeholder-cyan-400/60 focus:border-cyan-400 focus:outline-none font-mono"
                         placeholder="> NOMBRE_USUARIO"
                       />
                       <ValidationError
@@ -221,7 +237,7 @@ function ContactPage() {
                         type="email"
                         name="email"
                         required
-                        className="w-full px-2 py-1 bg-black/60 border border-cyan-400/40 rounded text-cyan-400 text-xs placeholder-cyan-400/60 focus:border-cyan-400 focus:outline-none font-mono"
+                        className="w-full px-2 py-1 bg-black/60 border border-cyan-400/40 rounded text-cyan-400 text-xs 2xl:text-lg placeholder-cyan-400/60 focus:border-cyan-400 focus:outline-none font-mono"
                         placeholder="> EMAIL_USUARIO"
                       />
                       <ValidationError
@@ -236,7 +252,7 @@ function ContactPage() {
                       name="message"
                       required
                       rows={3}
-                      className="w-full px-2 py-1 bg-black/60 border border-cyan-400/40 rounded text-cyan-400 text-xs placeholder-cyan-400/60 focus:border-cyan-400 focus:outline-none resize-none font-mono"
+                      className="w-full px-2 py-1 bg-black/60 border border-cyan-400/40 rounded text-cyan-400 text-xs 2xl:text-lg placeholder-cyan-400/60 focus:border-cyan-400 focus:outline-none resize-none font-mono"
                       placeholder="> MENSAJE_TRANSMISION"
                     />
                     <ValidationError

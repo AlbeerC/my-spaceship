@@ -48,7 +48,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
 
   return (
     // Contenedor principal más pequeño y mejor posicionado
-    <div className="absolute top-[42%] left-[35%] w-[22%] h-[22%] rounded-lg overflow-hidden">
+    <div className="absolute top-[42%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden">
       {/* Efecto de pantalla */}
       <div className="absolute inset-0 bg-transparent" />
 
@@ -69,7 +69,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
       <div className="relative h-full flex flex-col">
         {/* Barra superior */}
         <div className="flex justify-between items-center mb-1 p-1">
-          <div className="text-[12px] font-mono text-cyan-300">
+          <div className="text-[12px] 2xl:text-[16px] 2xl:mt-5 font-mono text-cyan-300">
             SHIP CONTROL INTERFACE
           </div>
           <div className="flex space-x-1">
@@ -95,7 +95,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
         <div className="flex-1 flex">
           {/* Panel izquierdo - Sistemas */}
           <div className="w-[60%] pr-1 border-r border-cyan-500/20 p-1">
-            <div className="text-[10px] font-mono text-cyan-400 mb-1">
+            <div className="text-[10px] font-mono text-cyan-400 mb-1 2xl:text-[14px]">
               SHIP SYSTEMS
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -111,7 +111,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
                 return (
                   <motion.button
                     key={system.id}
-                    className={`p-2 rounded border text-left text-[10px] font-mono cursor-pointer ${
+                    className={`p-2 2xl:py-4 rounded border text-left text-[10px] 2xl:text-[14px] font-mono cursor-pointer ${
                       isActive
                         ? style.active
                         : "border-gray-500/30 bg-gray-500/10 text-gray-400"
@@ -140,7 +140,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
           <div className="w-[40%] pl-1 flex flex-col">
             {/* Botón WARP */}
             <motion.button
-              className=" h-12 rounded-lg border border-cyan-500/50 bg-cyan-500/10 flex flex-col items-center justify-center mb-1 relative cursor-pointer"
+              className=" h-12 rounded-lg border border-cyan-500/50 bg-cyan-500/10 flex flex-col items-center justify-center mb-1 relative cursor-pointer 2xl:h-20"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 0 10px rgba(34, 211, 238, 0.4)",
@@ -159,12 +159,12 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
               }}
               transition={{ duration: 0.5 }}
             >
-              <div className="text-[10px] font-mono font-bold text-cyan-300">
+              <div className="text-[10px] font-mono font-bold text-cyan-300 2xl:text-[14px]">
                 WARP
               </div>
-              <div className="text-[7px] text-cyan-400">DRIVE</div>
+              <div className="text-[7px] text-cyan-400 2xl:text-[10px]">DRIVE</div>
               <motion.div
-                className="w-8 h-8 rounded-full border border-cyan-500/30 absolute"
+                className="w-8 h-8 rounded-full border border-cyan-500/30 absolute 2xl:w-12 2xl:h-12"
                 animate={{ rotate: 360 }}
                 transition={{
                   duration: 10,
@@ -176,11 +176,11 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
 
             {/* Estado del sistema */}
             <div className="bg-black/40 rounded p-1">
-              <div className="text-[10px] font-mono text-gray-400 mb-0.5">
+              <div className="text-[10px] font-mono text-gray-400 mb-0.5 2xl:text-[14px]">
                 STATUS
               </div>
               <div className="space-y-0.5">
-                <div className="flex justify-between text-[10px] font-mono">
+                <div className="flex justify-between text-[10px] 2xl:text-[14px] font-mono">
                   <span
                     className={
                       systemStates.engines ? "text-green-400" : "text-red-400"
@@ -196,7 +196,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
                     SHD:{systemStates.shields ? "ON" : "OFF"}
                   </span>
                 </div>
-                <div className="flex justify-between text-[10px] font-mono">
+                <div className="flex justify-between text-[10px] 2xl:text-[14px] font-mono">
                   <span
                     className={
                       systemStates.navigation

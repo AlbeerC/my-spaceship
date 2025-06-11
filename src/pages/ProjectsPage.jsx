@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import SnapSection from "../components/SnapSection"
 import projectsbg from '../assets/projects-bg.png'
+import useBreakpoint from "../components/UseBreakpoint"
 // project images
 import bz from '../assets/projects/bz.png'
 import ktw from '../assets/projects/ktw.png'
@@ -13,14 +14,17 @@ export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState(null)
   const [scanningProgress, setScanningProgress] = useState(0)
 
+  const is2XL = useBreakpoint()
+
   const projects = [
     {
       id: "project-1",
       name: "Basket Zone",
       codename: "OPERATION HOOPS",
       image: bz,
-      position: { x: 10, y: 30 },
+      position: { x: 10, y: 25 },
       size: { width: 300, height: 200 },
+      xlSize: { width: 400, height: 300 },
       delay: 0,
       missionData: {
         status: "DEPLOYED",
@@ -43,8 +47,9 @@ export default function ProjectsPage() {
       name: "TV Track",
       codename: "OPERATION NEXUS",
       image: tvtrack,
-      position: { x: 40, y: 35 },
+      position: { x: 40, y: 30 },
       size: { width: 280, height: 180 },
+      xlSize: { width: 380, height: 260 },
       delay: 0.5,
       missionData: {
         status: "ACTIVE",
@@ -67,8 +72,9 @@ export default function ProjectsPage() {
       name: "Know The World",
       codename: "OPERATION STELLAR",
       image: ktw,
-      position: { x: 15, y: 65 },
+      position: { x: 15, y: 60 },
       size: { width: 320, height: 220 },
+      xlSize: { width: 420, height: 320 },
       delay: 1,
       missionData: {
         status: "ACTIVE",
@@ -91,8 +97,9 @@ export default function ProjectsPage() {
       name: "ChatApp",
       codename: "OPERATION QUANTUM",
       image: chatapp,
-      position: { x: 60, y: 70 },
+      position: { x: 60, y: 65 },
       size: { width: 290, height: 190 },
+      xlSize: { width: 390, height: 290 },
       delay: 1.5,
       missionData: {
         status: "IN DEVELOPMENT",
@@ -114,8 +121,9 @@ export default function ProjectsPage() {
         name: "Gestión de ventas",
         codename: "OPERATION VENDOR",
         image: mya,
-        position: { x: 65, y: 30 },
+        position: { x: 65, y: 25 },
         size: { width: 300, height: 200 },
+        xlSize: { width: 400, height: 300 },
         delay: 1.5,
         missionData: {
           status: "ACTIVE",
@@ -175,6 +183,10 @@ export default function ProjectsPage() {
               top: `${project.position.y}%`,
               width: project.size.width,
               height: project.size.height,
+              ...(is2XL && {
+                width: project.xlSize.width,
+                height: project.xlSize.height,
+              }),
             }}
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -256,7 +268,7 @@ export default function ProjectsPage() {
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              className="relative bg-slate-900/95 backdrop-blur-md border border-cyan-400/50 rounded-2xl p-6 w-[90%] max-w-4xl max-h-[90vh] overflow-y-auto"
+              className="relative bg-slate-900/95 backdrop-blur-md border border-cyan-400/50 rounded-2xl p-6 w-[90%] max-w-4xl 2xl:max-w-6xl max-h-[90vh] overflow-y-auto"
               initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}

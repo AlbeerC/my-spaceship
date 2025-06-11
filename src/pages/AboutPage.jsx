@@ -29,7 +29,7 @@ function AboutPage() {
           >
             {/* Vital Stats Button - Integrated as a system control */}
             <motion.button
-              className="mt-4 mb-1 mx-auto bg-gradient-to-r from-cyan-500/30 to-cyan-600/30 hover:from-cyan-500/50 hover:to-cyan-600/50 border border-cyan-400/70 rounded px-2 py-1 text-cyan-300 font-mono text-[1rem] tracking-wider flex items-center justify-center gap-1 w-[90%] relative group overflow-hidden cursor-pointer"
+              className="mt-4 mb-1 mx-auto bg-gradient-to-r from-cyan-500/30 to-cyan-600/30 hover:from-cyan-500/50 hover:to-cyan-600/50 border border-cyan-400/70 rounded px-2 py-1 text-cyan-300 font-mono text-[1rem] 2xl:text-[1.3rem] tracking-wider flex items-center justify-center gap-1 w-[90%] relative group overflow-hidden cursor-pointer"
               style={{ transform: "rotate(-2deg)" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
