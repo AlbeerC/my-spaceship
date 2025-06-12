@@ -1,10 +1,13 @@
 import { Link, Events, scrollSpy } from 'react-scroll'
 import { useEffect, useState } from 'react'
+import UseBreakpoint from './UseBreakpoint'
 
 const sections = ['home', 'about', 'skills', 'projects', 'contact']
 
 export default function DotNav() {
   const [active, setActive] = useState('home')
+
+  const is2XL = UseBreakpoint()
 
   useEffect(() => {
     Events.scrollEvent.register('begin', () => {})
@@ -18,7 +21,9 @@ export default function DotNav() {
   }, [])
 
   return (
-    <div className='fixed right-12 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4'>
+    <div className='fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50'
+         style={{...(is2XL && { right: 'calc((100vw - 2300px) / 2 + 32px)'})}}
+    >
       {sections.map((id) => (
         <Link
           key={id}

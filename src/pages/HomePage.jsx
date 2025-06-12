@@ -4,7 +4,7 @@ import AnimatedStars from "../components/AnimatedStars";
 import WarpEffect from "../components/WarpEffect";
 import { HomeEffects } from "../components/HomeEffects";
 import CockpitControls from "../components/Controls";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 function HomePage() {
@@ -36,7 +36,7 @@ function HomePage() {
       />
 
       {/* Información del piloto */}
-      <div className="pt-12 mx-auto max-w-sm">
+      <div className="pt-12 2xl:pt-36 mx-auto max-w-sm 2xl:max-w-lg">
         <motion.div
           className="bg-black/20 backdrop-blur-sm border border-cyan-500/30 rounded-lg p-3 relative overflow-hidden"
           initial={{ opacity: 0, x: -50 }}
@@ -85,7 +85,7 @@ function HomePage() {
 
           <div className="text-center relative z-10">
             <motion.div
-              className="text-3xl font-mono font-bold text-cyan-300 mb-1"
+              className="text-3xl 2xl:text-5xl font-mono font-bold text-cyan-300 mb-1"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1 }}
@@ -98,7 +98,7 @@ function HomePage() {
             </motion.div>
 
             <motion.div
-              className="text-md font-mono text-gray-300 mb-2"
+              className="text-md 2xl:text-lg font-mono text-gray-300 mb-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.5 }}
@@ -125,7 +125,7 @@ function HomePage() {
                 transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
               />
               <motion.div
-                className="text-[12px] font-mono text-green-400"
+                className="text-[12px] 2xl:text-[16px] font-mono text-green-400"
                 animate={{ opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
               >
@@ -134,7 +134,7 @@ function HomePage() {
             </motion.div>
 
             <motion.div
-              className="text-[12px] font-mono text-cyan-500"
+              className="text-[12px] 2xl:text-[16px] font-mono text-cyan-500"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 2 }}

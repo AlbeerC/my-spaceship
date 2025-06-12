@@ -16,7 +16,12 @@ export default function FloatingSkills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
   const [scanningProgress, setScanningProgress] = useState(0);
 
+
   const is2XL = useBreakpoint()
+
+  const skillsStyles = (() => {
+    if (width >= 2200) return { bottom: "27%", right: "20%" };
+  })
 
   const skills = [
     {
@@ -162,7 +167,7 @@ export default function FloatingSkills() {
     <SnapSection background={skillsbg} id="skills" className="snap-mandatory">
       {/* Skill Analyzer Screen Overlay */}
       <div
-        className="absolute bottom-[34%] right-[12%] w-[23%] h-[40%] 2xl:bottom-[28%] z-15"
+        className="absolute bottom-[32%] right-[12%] w-[23%] h-[40%] 2xl:bottom-[28%] z-15"
         style={{ transform: "rotate(2deg)" }}
       >
         <AnimatePresence mode="wait">
@@ -187,11 +192,11 @@ export default function FloatingSkills() {
                     />
                   </div>
                   <div className="flex justify-between items-center w-full">
-                    <h3 className="text-purple-300 font-mono text-sm font-bold">
+                    <h3 className="text-purple-300 font-mono text-sm 2xl:text-xl font-bold">
                       {currentSkill.name}
                     </h3>
                     <span
-                      className={`text-xs font-mono ${
+                      className={`text-xs 2xl:text-lg font-mono ${
                         currentSkill.level === "INTERMEDIATE"
                           ? "text-green-400"
                           : currentSkill.level === "LEARNING"
@@ -206,7 +211,7 @@ export default function FloatingSkills() {
 
                 {/* Scanning Progress */}
                 <div className="mb-3">
-                  <div className="flex justify-between text-xs text-purple-300 mb-1">
+                  <div className="flex justify-between text-xs 2xl:text-lg text-purple-300 mb-1">
                     <span>SCANNING...</span>
                     <span>{scanningProgress}%</span>
                   </div>
@@ -222,14 +227,14 @@ export default function FloatingSkills() {
 
                 {/* Stats */}
                 <div className="space-y-2 2xl:space-y-4 mb-3">
-                  <div className="flex justify-between text-xs">
+                  <div className="flex justify-between text-xs 2xl:text-lg">
                     <span className="text-purple-300">Experiencia:</span>
                     <span className="text-cyan-300">
                       {currentSkill.experience}
                       {currentSkill.experience === 1 ? " año" : " años"}
                     </span>
                   </div>
-                  <div className="flex justify-between text-xs">
+                  <div className="flex justify-between text-xs 2xl:text-lg">
                     <span className="text-purple-300">Proyectos:</span>
                     <span className="text-cyan-300">
                       {currentSkill.projects}
@@ -242,7 +247,7 @@ export default function FloatingSkills() {
                   {Object.entries(currentSkill.stats).map(
                     ([key, value], index) => (
                       <div key={key}>
-                        <div className="flex justify-between text-xs text-purple-300 mb-1">
+                        <div className="flex justify-between text-xs 2xl:text-lg text-purple-300 mb-1">
                           <span className="capitalize">{key}:</span>
                           <span>{value}%</span>
                         </div>

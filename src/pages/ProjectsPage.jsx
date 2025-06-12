@@ -223,15 +223,15 @@ export default function ProjectsPage() {
 
               {/* Project Info */}
               <div className="absolute bottom-0 left-0 right-0 p-3 bg-slate-900/90 backdrop-blur-sm">
-                <h3 className="text-cyan-300 font-mono text-sm font-bold mb-1">{project.codename}</h3>
-                <p className="text-slate-300 font-mono text-xs">{project.name}</p>
+                <h3 className="text-cyan-300 font-mono text-sm 2xl:text-xl font-bold mb-1">{project.codename}</h3>
+                <p className="text-slate-300 font-mono text-xs 2xl:text-lg">{project.name}</p>
                 <div className="flex items-center mt-1">
                   <motion.div
                     className="w-2 h-2 rounded-full bg-cyan-400 mr-2"
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                   />
-                  <span className="text-cyan-400 font-mono text-xs">CLICK TO ANALYZE</span>
+                  <span className="text-cyan-400 font-mono text-xs 2xl:text-lg">CLICK TO ANALYZE</span>
                 </div>
               </div>
 

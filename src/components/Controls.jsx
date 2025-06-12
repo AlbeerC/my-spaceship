@@ -48,7 +48,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
 
   return (
     // Contenedor principal más pequeño y mejor posicionado
-    <div className="absolute top-[42%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden">
+    <div className="absolute top-[42%] xl:top-[44%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden">
       {/* Efecto de pantalla */}
       <div className="absolute inset-0 bg-transparent" />
 
