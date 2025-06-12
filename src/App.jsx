@@ -24,7 +24,7 @@ function App() {
         />
       )}
 
-      <UltraWideLayout maxContentWidth={2300}>
+      <UltraWideLayout maxContentWidth={2600}>
         <main
           className="h-screen w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth outline-none"
           id="app-container"
