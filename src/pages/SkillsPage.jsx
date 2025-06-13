@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import SnapSection from "../components/SnapSection";
 import useBreakpoint from "../components/UseBreakpoint";
+import { useWindowWidth } from "../components/UseWindowWidth";
 import skillsbg from "../assets/skills-bg.png";
 import git from "../assets/skills/git.png";
 import react from "../assets/skills/react.png";
@@ -19,9 +20,15 @@ export default function FloatingSkills() {
 
   const is2XL = useBreakpoint()
 
+  const width = useWindowWidth();
+
   const skillsStyles = (() => {
-    if (width >= 2200) return { bottom: "27%", right: "20%" };
-  })
+    if (width >= 2200) return { bottom: "30%", right: "11%" };
+    if (width >= 2000) return { bottom: "31%", right: "11%" };
+    if (width >= 1800) return { bottom: "30%", right: "11%" };
+    if (width >= 1600) return { bottom: "31%", right: "12%" };
+    return { bottom: "31%", right: "12%" };
+  })();
 
   const skills = [
     {
@@ -167,8 +174,8 @@ export default function FloatingSkills() {
     <SnapSection background={skillsbg} id="skills" className="snap-mandatory">
       {/* Skill Analyzer Screen Overlay */}
       <div
-        className="absolute bottom-[32%] right-[12%] w-[23%] h-[40%] 2xl:bottom-[28%] z-15"
-        style={{ transform: "rotate(2deg)" }}
+        className="absolute w-[23%] h-[40%] z-15"
+        style={{ transform: "rotate(2deg)", ...skillsStyles }}
       >
         <AnimatePresence mode="wait">
           {hoveredSkill && currentSkill ? (

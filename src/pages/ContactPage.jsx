@@ -17,7 +17,7 @@ function ContactPage() {
     if (width >= 2200) return { bottom: "27%", right: "20%" };
     if (width >= 2000) return { bottom: "26%", right: "19%" };
     if (width >= 1800) return { bottom: "25%", right: "18%" };
-    if (width >= 1600) return { bottom: "24%", right: "17%" };
+    if (width >= 1600) return { bottom: "22%", right: "17%" };
     if (width >= 1400) return { bottom: "23%", right: "17%" };
     if (width >= 1300) return { bottom: "19%", right: "17%" };
     return { bottom: "21%", right: "15%" };

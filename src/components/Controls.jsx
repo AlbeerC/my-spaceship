@@ -48,7 +48,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
 
   return (
     // Contenedor principal más pequeño y mejor posicionado
-    <div className="absolute top-[42%] xl:top-[44%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden">
+    <div className="absolute top-[42%] xl:top-[42%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden max-md:w-[100%] max-md:h-auto max-md:flex max-md:items-center max-md:justify-start">
       {/* Efecto de pantalla */}
       <div className="absolute inset-0 bg-transparent" />
 
@@ -66,7 +66,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
       />
 
       {/* Contenido de la pantalla */}
-      <div className="relative h-full flex flex-col">
+      <div className="relative h-full flex flex-col max-md:flex max-md:justify-start max-md:items-center max-md:w-[100%] max-md:h-auto">
         {/* Barra superior */}
         <div className="flex justify-between items-center mb-1 p-1">
           <div className="text-[12px] 2xl:text-[16px] 2xl:mt-5 font-mono text-cyan-300">
@@ -142,7 +142,6 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
             <motion.button
               className=" h-12 rounded-lg border border-cyan-500/50 bg-cyan-500/10 flex flex-col items-center justify-center mb-1 relative cursor-pointer 2xl:h-20"
               whileHover={{
-                scale: 1.05,
                 boxShadow: "0 0 10px rgba(34, 211, 238, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
