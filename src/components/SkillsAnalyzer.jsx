@@ -4,7 +4,7 @@ import computerbg from "../assets/computer-skills.png";
 
 export default function SkillAnalyzer({ skill, scanningProgress }) {
   return (
-    <div className="relative w-[100vw] max-w-[500px] 2xl:max-w-[750px] aspect-[11/12] overflow-hidden">
+    <div className="relative w-[100vw] max-w-[500px] 2xl:max-w-[750px] aspect-[11/12] overflow-hidden max-md:max-w-[80%]">
 
       <img
         src={computerbg}
@@ -12,7 +12,7 @@ export default function SkillAnalyzer({ skill, scanningProgress }) {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
-      <div className="absolute top-[14%] left-[15%] w-[55%] h-[45%] z-10 " style={{transform: "rotate(2deg)"}}>
+      <div className="absolute top-[14%] left-[15%] w-[55%] h-[45%] z-10 max-md:top-[12%] max-md:w-[65%] max-md:left-[12%]" style={{transform: "rotate(2deg)"}}>
         <AnimatePresence mode="wait">
           {skill ? (
             <motion.div
@@ -25,15 +25,15 @@ export default function SkillAnalyzer({ skill, scanningProgress }) {
             >
               {/* Header */}
               <div className="flex items-center mb-3">
-                <div className="w-8 h-8 mr-2">
+                <div className="w-8 h-8 mr-2 max-md:w-4 max-md:h-4">
                   <img
                     src={skill.icon}
                     alt={skill.name}
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div className="flex justify-between items-center w-full">
-                  <h3 className="text-purple-300 font-mono text-sm 2xl:text-xl font-bold">
+                <div className="flex justify-between items-center w-full max-md:gap-3">
+                  <h3 className="text-purple-300 font-mono text-sm 2xl:text-xl font-bold max-md:text-xs">
                     {skill.name}
                   </h3>
                   <span
@@ -81,7 +81,7 @@ export default function SkillAnalyzer({ skill, scanningProgress }) {
               </div>
 
               {/* Performance bars */}
-              <div className="space-y-2 2xl:space-y-4">
+              <div className="space-y-2 2xl:space-y-4 max-md:hidden">
                 {Object.entries(skill.stats).map(([key, value], index) => (
                   <div key={key}>
                     <div className="flex justify-between text-xs 2xl:text-lg text-purple-300 mb-1">

@@ -18,10 +18,10 @@ export default function FloatingSkills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
   const [scanningProgress, setScanningProgress] = useState(0);
 
-
-  const is2XL = useBreakpoint()
+  const is2XL = useBreakpoint();
 
   const width = useWindowWidth();
+  const isMobile = width < 768;
 
   const skillsStyles = (() => {
     if (width >= 2200) return { bottom: "30%", right: "11%" };
@@ -37,6 +37,7 @@ export default function FloatingSkills() {
       icon: css,
       color: "from-cyan-400 to-blue-500",
       position: { x: 7, y: 50 },
+      mobilePosition: { x: 5, y: 55 },
       size: 90,
       xlSize: 120,
       delay: 0.8,
@@ -50,6 +51,7 @@ export default function FloatingSkills() {
       icon: git,
       color: "from-cyan-400 to-purple-500",
       position: { x: 15, y: 25 },
+      mobilePosition: { x: 10, y: 30 },
       size: 90,
       xlSize: 120,
       delay: 0,
@@ -63,6 +65,7 @@ export default function FloatingSkills() {
       icon: react,
       color: "from-blue-400 to-cyan-500",
       position: { x: 40, y: 20 },
+      mobilePosition: { x: 35, y: 25 },
       size: 90,
       xlSize: 120,
       delay: 0.5,
@@ -76,6 +79,7 @@ export default function FloatingSkills() {
       icon: node,
       color: "from-green-400 to-emerald-500",
       position: { x: 25, y: 60 },
+      mobilePosition: { x: 30, y: 55 },
       size: 90,
       xlSize: 120,
       delay: 1,
@@ -89,6 +93,7 @@ export default function FloatingSkills() {
       icon: typescript,
       color: "from-blue-500 to-indigo-600",
       position: { x: 50, y: 70 },
+      mobilePosition: { x: 55, y: 65 },
       size: 90,
       xlSize: 120,
       delay: 1.5,
@@ -102,6 +107,7 @@ export default function FloatingSkills() {
       icon: javascript,
       color: "from-yellow-400 to-orange-500",
       position: { x: 40, y: 40 },
+      mobilePosition: { x: 55, y: 25 },
       size: 90,
       xlSize: 120,
       delay: 2,
@@ -115,6 +121,7 @@ export default function FloatingSkills() {
       icon: tailwind,
       color: "from-teal-400 to-cyan-500",
       position: { x: 10, y: 75 },
+      mobilePosition: { x: 5, y: 75 },
       size: 90,
       xlSize: 120,
       delay: 2.5,
@@ -128,6 +135,7 @@ export default function FloatingSkills() {
       icon: leetcode,
       color: "from-cyan-400 to-purple-500",
       position: { x: 55, y: 45 },
+      mobilePosition: { x: 75, y: 40 },
       size: 90,
       xlSize: 120,
       delay: 2.5,
@@ -175,21 +183,24 @@ export default function FloatingSkills() {
     <SnapSection background={skillsbg} id="skills" className="snap-mandatory">
       {/* Skill Analyzer Screen Overlay */}
 
-      <div className="flex justify-end items-center min-h-screen mr-10">
-        <SkillsAnalyzer skill={currentSkill} scanningProgress={scanningProgress} />
+      <div className="flex justify-end items-center min-h-screen mr-10 max-md:flex-col-reverse max-md:mr-0 max-md:justify-between">
+        <SkillsAnalyzer
+          skill={currentSkill}
+          scanningProgress={scanningProgress}
+        />
       </div>
 
       {/* Floating Skills - Limited to left 70% */}
-      <div className="absolute inset-0 z-10" style={{ width: "70%" }}>
+      <div className="absolute inset-0 z-10 w-[70%] max-md:w-full max-md:h-[40%] max-md:mt-20">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.name}
             className="absolute cursor-pointer"
             style={{
-              left: `${skill.position.x}%`,
-              top: `${skill.position.y}%`,
-              width: skill.size,
-              height: skill.size,
+              left: `${isMobile ? skill.mobilePosition.x : skill.position.x}%`,
+              top: `${isMobile ? skill.mobilePosition.y : skill.position.y}%`,
+              width: `${isMobile ? 60 : skill.size}px`,
+              height: `${isMobile ? 60 : skill.size}px`,
               ...(is2XL && {
                 width: skill.xlSize,
                 height: skill.xlSize,
@@ -211,8 +222,17 @@ export default function FloatingSkills() {
               zIndex: 50,
               transition: { duration: 0.3 },
             }}
-            onHoverStart={() => setHoveredSkill(skill.name)}
-            onHoverEnd={() => setHoveredSkill(null)}
+            onHoverStart={
+              isMobile ? undefined : () => setHoveredSkill(skill.name)
+            }
+            onHoverEnd={isMobile ? undefined : () => setHoveredSkill(null)}
+            onClick={() => {
+              if (isMobile) {
+                setHoveredSkill((prev) =>
+                  prev === skill.name ? null : skill.name
+                );
+              }
+            }}
           >
             {/* Skill Circle */}
             <motion.div
@@ -315,12 +335,12 @@ export default function FloatingSkills() {
 
       {/* Section Title */}
       <motion.div
-        className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20 max-md:top-4"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 1 }}
       >
-        <h2 className="text-4xl font-mono font-bold text-cyan-300 mb-2">
+        <h2 className="text-4xl font-mono font-bold text-cyan-300 mb-2 max-md:text-2xl">
           TECH STACK
         </h2>
         <motion.div

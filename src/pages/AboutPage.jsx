@@ -25,7 +25,7 @@ function AboutPage() {
         <div className="w-[80%] p-6">
           {/* Interactive Desk Screen with Button */}
           <div
-            className="absolute bottom-[25%] left-1/2 transform -translate-x-1/2 w-[15%] h-[15%] ml-5 z-20 max-lg:w-[50%] max-lg:bottom-[45px] max-lg:left-[45%]"
+            className="absolute bottom-[25%] left-1/2 transform -translate-x-1/2 w-[15%] h-[15%] ml-5 z-20 max-md:w-[50%] max-md:bottom-[45px] max-md:left-[45%]"
             style={{ transform: "rotate(2deg)" }}
           >
             {/* Vital Stats Button - Integrated as a system control */}
