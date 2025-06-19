@@ -349,9 +349,10 @@ export default function FloatingSkills() {
           animate={{ width: "200px" }}
           transition={{ duration: 1.5, delay: 1.5 }}
         />
-        <p className="text-cyan-400/70 font-mono text-lg mt-2">
+        <p className="text-cyan-400/70 font-mono text-lg mt-2 max-md:hidden">
           Hover para analizar tecnologías
         </p>
+        {isMobile && <p className="text-cyan-400/70 font-mono text-md mt-2">Click para analizar tecnología</p>}
       </motion.div>
     </SnapSection>
   );
