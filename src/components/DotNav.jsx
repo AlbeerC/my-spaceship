@@ -20,7 +20,7 @@ export default function DotNav() {
   }, [])
 
   return (
-    <div className='fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50'
+    <div className='fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50 max-md:right-2'
          style={{...(is2XL && { right: 'calc((100vw - 2600px) / 2 + 32px)'})}}
     >
       {sections.map((id) => (

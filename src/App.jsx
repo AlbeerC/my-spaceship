@@ -4,10 +4,10 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import SkillsPage from "./pages/SkillsPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import ContactPage from "./pages/ContactPage";
 import DotNav from "./components/DotNav";
 import LoadingPage from "./pages/LoadingPage";
 import UltraWideLayout from "./components/UltraWideLayout";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const [loading, setLoading] = useState(true);

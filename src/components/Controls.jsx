@@ -48,7 +48,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
 
   return (
     // Contenedor principal más pequeño y mejor posicionado
-    <div className="absolute top-[42%] xl:top-[42%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden max-md:w-[100%] max-md:h-auto max-md:flex max-md:items-center max-md:justify-start">
+    <div className="absolute top-[42%] xl:top-[42%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden max-md:w-[70%] max-md:left-[0%]">
       {/* Efecto de pantalla */}
       <div className="absolute inset-0 bg-transparent" />
 
@@ -72,7 +72,7 @@ export default function CockpitControls({ onWarpActivate, onSystemToggle }) {
           <div className="text-[12px] 2xl:text-[16px] 2xl:mt-5 font-mono text-cyan-300">
             SHIP CONTROL INTERFACE
           </div>
-          <div className="flex space-x-1">
+          <div className="flex space-x-1 max-lg:hidden">
             {[1, 2, 3].map((i) => (
               <motion.div
                 key={i}

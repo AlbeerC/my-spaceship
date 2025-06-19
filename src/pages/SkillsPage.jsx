@@ -12,6 +12,7 @@ import javascript from "../assets/skills/javascript.png";
 import tailwind from "../assets/skills/tailwind.png";
 import leetcode from "../assets/skills/leetcode.png";
 import css from "../assets/skills/css.png";
+import SkillsAnalyzer from "../components/SkillsAnalyzer";
 
 export default function FloatingSkills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
@@ -173,159 +174,9 @@ export default function FloatingSkills() {
   return (
     <SnapSection background={skillsbg} id="skills" className="snap-mandatory">
       {/* Skill Analyzer Screen Overlay */}
-      <div
-        className="absolute w-[23%] h-[40%] z-15"
-        style={{ transform: "rotate(2deg)", ...skillsStyles }}
-      >
-        <AnimatePresence mode="wait">
-          {hoveredSkill && currentSkill ? (
-            <motion.div
-              key={hoveredSkill}
-              className="w-full h-full bg-transparent overflow-hidden"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Content */}
-              <div className="p-3 h-full">
-                {/* Skill Header */}
-                <div className="flex items-center mb-3">
-                  <div className="w-8 h-8 mr-2">
-                    <img
-                      src={currentSkill.icon || "/placeholder.svg"}
-                      alt={currentSkill.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="flex justify-between items-center w-full">
-                    <h3 className="text-purple-300 font-mono text-sm 2xl:text-xl font-bold">
-                      {currentSkill.name}
-                    </h3>
-                    <span
-                      className={`text-xs 2xl:text-lg font-mono ${
-                        currentSkill.level === "INTERMEDIATE"
-                          ? "text-green-400"
-                          : currentSkill.level === "LEARNING"
-                          ? "text-yellow-400"
-                          : "text-blue-400"
-                      }`}
-                    >
-                      {currentSkill.level}
-                    </span>
-                  </div>
-                </div>
 
-                {/* Scanning Progress */}
-                <div className="mb-3">
-                  <div className="flex justify-between text-xs 2xl:text-lg text-purple-300 mb-1">
-                    <span>SCANNING...</span>
-                    <span>{scanningProgress}%</span>
-                  </div>
-                  <div className="w-full bg-slate-700 rounded-full h-1">
-                    <motion.div
-                      className="bg-gradient-to-r from-purple-500 to-pink-500 h-1 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${scanningProgress}%` }}
-                      transition={{ duration: 0.1 }}
-                    />
-                  </div>
-                </div>
-
-                {/* Stats */}
-                <div className="space-y-2 2xl:space-y-4 mb-3">
-                  <div className="flex justify-between text-xs 2xl:text-lg">
-                    <span className="text-purple-300">Experiencia:</span>
-                    <span className="text-cyan-300">
-                      {currentSkill.experience}
-                      {currentSkill.experience === 1 ? " año" : " años"}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-xs 2xl:text-lg">
-                    <span className="text-purple-300">Proyectos:</span>
-                    <span className="text-cyan-300">
-                      {currentSkill.projects}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Performance Bars */}
-                <div className="space-y-2 2xl:space-y-4">
-                  {Object.entries(currentSkill.stats).map(
-                    ([key, value], index) => (
-                      <div key={key}>
-                        <div className="flex justify-between text-xs 2xl:text-lg text-purple-300 mb-1">
-                          <span className="capitalize">{key}:</span>
-                          <span>{value}%</span>
-                        </div>
-                        <div className="w-full bg-slate-700 rounded-full h-1">
-                          <motion.div
-                            className={`h-1 rounded-full ${
-                              key === "proficiency"
-                                ? "bg-gradient-to-r from-green-500 to-emerald-400"
-                                : key === "usage"
-                                ? "bg-gradient-to-r from-blue-500 to-cyan-400"
-                                : "bg-gradient-to-r from-purple-500 to-pink-400"
-                            }`}
-                            initial={{ width: 0 }}
-                            animate={{ width: `${value}%` }}
-                            transition={{ duration: 1, delay: index * 0.2 }}
-                          />
-                        </div>
-                      </div>
-                    )
-                  )}
-                </div>
-
-                {/* Animated Elements */}
-                <motion.div
-                  className="absolute bottom-2 right-2 w-4 h-4"
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  }}
-                ></motion.div>
-              </div>
-
-              {/* Scan Line Effect */}
-              <motion.div
-                className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent"
-                animate={{ y: [0, 200, 0] }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "linear",
-                }}
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              className="w-full h-full flex items-center justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <div className="text-center 2xl:mb-40">
-                <motion.div
-                  className="w-8 h-8 2xl:w-8 2xl:h-8 border-2 border-purple-400 border-t-transparent rounded-full mx-auto mb-2"
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 1,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  }}
-                />
-                <p className="text-purple-300 font-mono text-xs 2xl:text-xl">
-                  STANDBY MODE
-                </p>
-                <p className="text-purple-400/70 font-mono text-xs mt-1 2xl:text-lg">
-                  Hover skill to analyze
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <div className="flex justify-end items-center min-h-screen mr-10">
+        <SkillsAnalyzer skill={currentSkill} scanningProgress={scanningProgress} />
       </div>
 
       {/* Floating Skills - Limited to left 70% */}

@@ -1,5 +1,6 @@
 import SnapSection from "../components/SnapSection";
 import aboutbg from "../assets/about-bg.png";
+import aboutbgmobile from "../assets/about-bg-mobile.png";
 import AnimatedStars from "../components/AnimatedStars";
 import { HomeEffects } from "../components/HomeEffects";
 import HudAboutMe from "../components/HudAboutMe";
@@ -10,10 +11,10 @@ function AboutPage() {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <SnapSection background={aboutbg} id="about" className="snap-mandatory">
+    <SnapSection background={aboutbg} id="about" mobileBackground={aboutbgmobile} className="snap-mandatory">
       <div className="flex w-full h-full">
         {/* Columna izquierda con efectos visuales */}
-        <div className="w-[20%] max-h-[60%] relative overflow-hidden mt-10">
+        <div className="w-[20%] max-h-[60%] relative overflow-hidden mt-10 max-lg:hidden">
           <div className="">
             <AnimatedStars />
             <HomeEffects />
@@ -24,7 +25,7 @@ function AboutPage() {
         <div className="w-[80%] p-6">
           {/* Interactive Desk Screen with Button */}
           <div
-            className="absolute bottom-[25%] left-1/2 transform -translate-x-1/2 w-[15%] h-[15%] ml-5 z-20"
+            className="absolute bottom-[25%] left-1/2 transform -translate-x-1/2 w-[15%] h-[15%] ml-5 z-20 max-lg:w-[50%] max-lg:bottom-[45px] max-lg:left-[45%]"
             style={{ transform: "rotate(2deg)" }}
           >
             {/* Vital Stats Button - Integrated as a system control */}

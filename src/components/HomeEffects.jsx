@@ -14,7 +14,7 @@ export function HomeEffects() {
   }, [])
 
   return (
-    <div className="pointer-events-none absolute inset-0">
+    <div className="pointer-events-none absolute inset-0 max-lg:hidden">
       {/* Efecto de brillo en los bordes del parabrisas */}
       <motion.div
         className="absolute inset-0"

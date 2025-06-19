@@ -36,7 +36,7 @@ function HomePage() {
       />
 
       {/* Información del piloto */}
-      <div className="pt-12 2xl:pt-36 mx-auto max-w-sm 2xl:max-w-lg">
+      <div className="pt-12 2xl:pt-36 mx-auto max-w-sm 2xl:max-w-lg max-lg:max-w-[90%]">
         <motion.div
           className="bg-black/20 backdrop-blur-sm border border-cyan-500/30 rounded-lg p-3 relative overflow-hidden"
           initial={{ opacity: 0, x: -50 }}

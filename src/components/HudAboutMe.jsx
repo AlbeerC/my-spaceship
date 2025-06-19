@@ -111,7 +111,7 @@ export default function SpaceshipHUD() {
     <div>
       {/* HUD Interface */}
       <motion.div
-        className="absolute top-[50%] left-[50%] -translate-x-[50%] translate-y-[-50%] w-[40%]"
+        className="absolute top-[50%] left-[50%] -translate-x-[50%] translate-y-[-50%] w-[40%] max-md:w-[90%]"
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
