@@ -148,14 +148,16 @@ export default function CommunicationPanel({ stations }) {
   };
 
   return (
-    <div className="relative w-[100vw] max-w-[90vw] aspect-[1289/740] overflow-hidden mx-auto">
+    <div className="relative w-[100vw] max-w-[90vw] aspect-[1289/740] overflow-hidden mx-auto 
+  max-md:aspect-auto max-md:h-auto max-md:min-h-[100vh] max-md:flex max-md:items-center max-md:justify-center">
       <img
         src={contactScreen}
         alt="contact-panel"
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0 max-md:hidden"
       />
 
-      <div className="absolute top-[12%] left-[10%] w-[80%] h-[75%] z-10 overflow-hidden">
+      <div className="absolute top-[12%] left-[10%] w-[80%] h-[75%] z-10 overflow-hidden 
+      max-md:static max-md:w-full max-md:h-auto max-md:flex max-md:items-center max-md:justify-center">
         <motion.div
           className=" rounded-lg p-4 shadow-2xl"
           variants={containerVariants}
@@ -179,7 +181,7 @@ export default function CommunicationPanel({ stations }) {
                     repeat: Number.POSITIVE_INFINITY,
                   }}
                 />
-                <span className="text-green-400 font-mono text-sm">
+                <span className="text-green-400 font-mono text-sm max-md:text-xs">
                   SISTEMA
                 </span>
               </div>
@@ -203,7 +205,7 @@ export default function CommunicationPanel({ stations }) {
                 >
                   <Satellite className="w-4 h-4 text-blue-400" />
                 </motion.div>
-                <span className="text-blue-400 font-mono text-sm">SEÑAL</span>
+                <span className="text-blue-400 font-mono text-sm max-md:text-xs">SEÑAL</span>
               </div>
               <p className="text-blue-300 font-mono text-xs">FUERTE</p>
             </motion.div>
@@ -216,7 +218,7 @@ export default function CommunicationPanel({ stations }) {
             >
               <div className="flex items-center gap-2 mb-2">
                 <Radio className="w-4 h-4 text-yellow-400" />
-                <span className="text-yellow-400 font-mono text-sm">
+                <span className="text-yellow-400 font-mono text-sm max-md:text-xs">
                   ESTACIONES
                 </span>
               </div>
