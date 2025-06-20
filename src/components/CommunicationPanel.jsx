@@ -165,9 +165,9 @@ export default function CommunicationPanel({ stations }) {
           animate="visible"
         >
           {/* Panel superior de estado */}
-          <div className="grid grid-cols-3 gap-3 mb-4">
+          <div className="grid grid-cols-3 gap-3 mb-4 max-md:grid-cols-2">
             <motion.div
-              className="bg-gray-900 rounded p-3 border border-green-500/20"
+              className="bg-gray-900 rounded p-3 border border-green-500/20 max-md:hidden"
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -260,7 +260,7 @@ export default function CommunicationPanel({ stations }) {
                 </motion.button>
               </div>
 
-              <div className="relative w-64 h-64 mx-auto bg-black rounded-full border-2 border-green-500/30 overflow-hidden">
+              <div className="relative w-64 h-64 mx-auto bg-black rounded-full border-2 border-green-500/30 overflow-hidden max-md:h-32 max-md:rounded-2xl">
                 {/* Líneas de radar */}
                 <div className="absolute inset-0">
                   {[...Array(8)].map((_, i) => (
@@ -407,7 +407,7 @@ export default function CommunicationPanel({ stations }) {
                         <motion.div
                           className={`absolute ${
                             station.position.y < 50 ? "-bottom-10" : "-top-10"
-                          } left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-2 py-1 rounded text-xs font-mono border ${station.color.replace(
+                          } left-1/2 max-md:hidden transform -translate-x-1/2 bg-gray-900 text-white px-2 py-1 rounded text-xs font-mono border ${station.color.replace(
                             "text-",
                             "border-"
                           )} whitespace-nowrap pointer-events-none`}
@@ -466,7 +466,7 @@ export default function CommunicationPanel({ stations }) {
               </div>
 
               {/* Leyenda del radar */}
-              <div className="mt-3 grid grid-cols-4 gap-1">
+              <div className="mt-3 grid grid-cols-4 gap-1 max-md:grid-cols-2">
                 {stations.map((station, index) => {
                   const Icon = station.icon;
                   return (
@@ -595,7 +595,7 @@ export default function CommunicationPanel({ stations }) {
                               <span className="text-gray-400">POTENCIA:</span>
                               <span className="text-green-400">98%</span>
                             </div>
-                            <div className="flex justify-between text-xs font-mono">
+                            <div className="flex justify-between text-xs font-mono max-md:hidden">
                               <span className="text-gray-400">
                                 ENCRIPTACIÓN:
                               </span>
