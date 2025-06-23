@@ -250,6 +250,24 @@ export default function ProjectsPage() {
                   </span>
                 </div>
               </div>
+
+              {/* Scan Lines */}
+              <motion.div
+                className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"
+                animate={{ y: [0, project.size.height, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                  delay: index * 0.5,
+                }}
+              />
+
+              {/* Corner Decorations */}
+              <div className="absolute top-1 left-1 w-3 h-3 border-l border-t border-cyan-400/60" />
+              <div className="absolute top-1 right-1 w-3 h-3 border-r border-t border-cyan-400/60" />
+              <div className="absolute bottom-1 left-1 w-3 h-3 border-l border-b border-cyan-400/60" />
+              <div className="absolute bottom-1 right-1 w-3 h-3 border-r border-b border-cyan-400/60" />
             </motion.div>
           </motion.div>
         ))}
@@ -501,6 +519,23 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-cyan-400/40 rounded-tl-lg" />
+              <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-cyan-400/40 rounded-tr-lg" />
+              <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-cyan-400/40 rounded-bl-lg" />
+              <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-cyan-400/40 rounded-br-lg" />
+
+              {/* Scanning Line */}
+              <motion.div
+                className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"
+                animate={{ y: [0, 400, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
+              />
             </motion.div>
           </motion.div>
         )}
