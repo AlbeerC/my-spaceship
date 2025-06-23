@@ -227,7 +227,7 @@ export default function CockpitControls({
 
                     {system.id === "navigation" && isActive && (
                       <motion.div
-                        className="text-[8px] text-pink-300 mt-1 max-md:hidden"
+                        className="text-[7px] text-pink-300 mt-1 max-md:hidden"
                         key={navigationTarget}
                         initial={{ opacity: 0.5 }}
                         animate={{ opacity: 1 }}
