@@ -24,21 +24,19 @@ function App() {
         />
       )}
 
-      <UltraWideLayout maxContentWidth={2600}>
-        <main
-          className="h-screen w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth outline-none"
-          id="app-container"
-        >
-          <div className="h-full relative">
-            <DotNav />
-            <HomePage />
-            <AboutPage />
-            <SkillsPage />
-            <ProjectsPage />
-            <ContactPage />
-          </div>
-        </main>
-      </UltraWideLayout>
+      <main
+        className="h-screen w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth outline-none"
+        id="app-container"
+      >
+        <div className="h-full relative">
+          <DotNav />
+          <HomePage />
+          <AboutPage />
+          <SkillsPage />
+          <ProjectsPage />
+          <ContactPage />
+        </div>
+      </main>
     </>
   );
 }

@@ -110,7 +110,7 @@ export default function CockpitControls({
   }
 
   return (
-    <div className="absolute top-[42%] xl:top-[42%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden max-md:w-[70%] max-md:left-[0%]">
+    <div className="absolute top-[42%] xl:top-[42%] left-[35%] w-[22%] h-[22%] 2xl:h-[26%] rounded-lg overflow-hidden max-md:w-[70%] max-md:left-[0%] cockpit-controls">
       {/* Efecto de pantalla */}
       <div className="absolute inset-0 bg-transparent" />
 

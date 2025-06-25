@@ -1,10 +1,11 @@
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100%;
 }
 
 body {
-  background-image: url('./assets/body-bg.png');
+  background-image: url("./assets/body-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,4 +19,20 @@ main {
 
 main::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+@media screen and (width: 1600px) and (height: 900px) {
+  .cockpit-controls {
+    top: 40%;
+  }
+}
+
+@media (min-width: 2300px) {
+  .terminal-log-contact {
+    max-height: 400px;
+  }
+
+  html {
+    font-size: 115%;
+  }
 }

@@ -6,8 +6,6 @@ const sections = ['home', 'about', 'skills', 'projects', 'contact']
 export default function DotNav() {
   const [active, setActive] = useState('home')
 
-  const is2XL = window.innerWidth >= 2600
-
   useEffect(() => {
     Events.scrollEvent.register('begin', () => {})
     Events.scrollEvent.register('end', () => {})
@@ -20,9 +18,7 @@ export default function DotNav() {
   }, [])
 
   return (
-    <div className='fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50 max-md:right-2'
-         style={{...(is2XL && { right: 'calc((100vw - 2600px) / 2 + 32px)'})}}
-    >
+    <div className='fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50 max-md:right-2'>
       {sections.map((id) => (
         <Link
           key={id}

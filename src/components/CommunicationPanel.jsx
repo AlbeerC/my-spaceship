@@ -689,7 +689,7 @@ export default function CommunicationPanel({ stations }) {
             <h4 className="text-green-400 font-mono text-sm mb-2">
               LOG DE ACTIVIDAD
             </h4>
-            <div className="space-y-1 text-xs font-mono max-h-20 overflow-y-auto">
+            <div className="space-y-1 text-xs font-mono max-h-30 overflow-y-auto terminal-log-contact">
               <motion.p
                 className="text-green-300"
                 initial={{ opacity: 0, x: -20 }}

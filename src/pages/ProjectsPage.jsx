@@ -30,7 +30,7 @@ export default function ProjectsPage() {
         status: "DEPLOYED",
         duration: "5 semanas",
         technologies: ["React", "CSS", "JavaScript", "Firebase"],
-        complexity: "INTERMEDIATE",
+        complexity: "INTERMEDIO",
         description:
           "Plataforma de comercio electrónico especializada en equipamiento de basketball. Interfaz moderna con carrito de compras y sistema de navegación intuitivo.",
         objectives: [
@@ -52,10 +52,10 @@ export default function ProjectsPage() {
       xlSize: { width: 380, height: 260 },
       delay: 0.5,
       missionData: {
-        status: "ACTIVE",
+        status: "IN DEVELOPMENT",
         duration: "4 semanas",
         technologies: ["React", "Javascript", "CSS", "Firebase", "APIs"],
-        complexity: "ADVANCED",
+        complexity: "AVANZADO",
         description:
           "App de películas con login y seguimiento personalizado para usuarios",
         objectives: [
@@ -81,7 +81,7 @@ export default function ProjectsPage() {
         status: "ACTIVE",
         duration: "3 semanas",
         technologies: ["React", "CSS", "APIs & Libraries"],
-        complexity: "INTERMEDIATE",
+        complexity: "INTERMEDIO",
         description:
           "App para aprender de geografía de forma interactiva y divertida",
         objectives: [
@@ -104,9 +104,9 @@ export default function ProjectsPage() {
       delay: 1.5,
       missionData: {
         status: "IN DEVELOPMENT",
-        duration: "En progreso",
+        duration: "2 semanas",
         technologies: ["React", "TypeScript", "Firebase", "Node JS"],
-        complexity: "BEGINNER",
+        complexity: "PRINCIPIANTE",
         description: "App de chat en tiempo real con perfiles y mensajes",
         objectives: [
           "Implementar conexiones a tiempo real",
@@ -130,7 +130,7 @@ export default function ProjectsPage() {
         status: "ACTIVE",
         duration: "3 semanas",
         technologies: ["React", "Tailwind", "Firebase"],
-        complexity: "INTERMEDIATE",
+        complexity: "INTERMEDIO",
         description:
           "App de gestión de ventas y préstamos para uso interno de un cliente",
         objectives: [
@@ -161,11 +161,11 @@ export default function ProjectsPage() {
 
   const getComplexityColor = (complexity) => {
     switch (complexity) {
-      case "BEGINNER":
+      case "PRINCIPIANTE":
         return "text-green-400";
-      case "INTERMEDIATE":
+      case "INTERMEDIO":
         return "text-yellow-400";
-      case "ADVANCED":
+      case "AVANZADO":
         return "text-red-400";
       default:
         return "text-gray-400";
@@ -539,10 +539,10 @@ export default function ProjectsPage() {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-cyan-400/40 rounded-tl-lg" />
-              <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-cyan-400/40 rounded-tr-lg" />
-              <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-cyan-400/40 rounded-bl-lg" />
-              <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-cyan-400/40 rounded-br-lg" />
+              <div className="absolute max-md:hidden top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-cyan-400/40 rounded-tl-lg" />
+              <div className="absolute max-md:hidden top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-cyan-400/40 rounded-tr-lg" />
+              <div className="absolute max-md:hidden bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-cyan-400/40 rounded-bl-lg" />
+              <div className="absolute max-md:hidden bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-cyan-400/40 rounded-br-lg" />
 
               {/* Scanning Line */}
               <motion.div
